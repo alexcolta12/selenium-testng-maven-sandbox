@@ -3,6 +3,7 @@ package com.test.selenium.maven.framework;
 import com.test.selenium.maven.model.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 
 public class DriverManager {
@@ -22,10 +23,16 @@ public class DriverManager {
     }
 
     public void buildDriver(Browser browser) {
+        setWebDriverBinaries();
         switch (browser) {
             case CHROME:
-                setWebDriverBinaries();
                 driver = new ChromeDriver();
+                break;
+            case HEADLESS_CHROME:
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("headless");
+                options.addArguments("window-size=1900x1080");
+                driver = new ChromeDriver(options);
                 break;
         }
     }

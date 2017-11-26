@@ -13,7 +13,7 @@ public class TestClass {
     @Test(description = "My Test")
     public void myTest() {
         DriverManager dm = new DriverManager();
-        dm.buildDriver(Browser.CHROME);
+        dm.buildDriver(Browser.HEADLESS_CHROME);
         driver = dm.getDriver();
         driver.navigate().to("https://www.google.com");
         System.out.println(System.getProperty("os.name"));
